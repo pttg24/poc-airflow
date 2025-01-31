@@ -1,10 +1,34 @@
 # POC Apache Airflow
 
-This is a POC for Apache Airflow jobs.
+### Project Overview
+This project serves as a Proof of Concept (POC) for implementing an ETL (Extract, Transform, Load) workflow using Apache Airflow. The primary objective is to demonstrate the automation of data ingestion from a CSV file into a PostgreSQL database.
 
-The purpose of this project is simulate a simple ETL flow.
+### Workflow Description
+````
+The ETL pipeline follows these key steps:
 
-The job should read a **.csv** file from **data_input** folder and create and run the corresponding **INSERT** queries into postgres database.
+Extract:
+
+The Airflow job reads a CSV file from the designated data_input folder.
+
+Transform (if needed):
+
+Any necessary data transformations or preprocessing can be applied before loading the data into the database.
+
+Load:
+
+The pipeline generates the appropriate INSERT SQL queries based on the extracted data.
+The queries are executed to populate the PostgreSQL database.
+````
+
+## Technology Stack
+
+- Apache Airflow: Orchestrates the ETL workflow.
+- PostgreSQL: Acts as the target database for data storage.
+- Python: Handles data extraction, transformation, and SQL query generation.
+- This POC provides a foundational setup for an automated data pipeline, which can be extended to handle more complex ETL processes.
+
+## Screenshots
 
 ![dags](media/dags.png)
 
@@ -25,6 +49,8 @@ password: admin
 
 in the Airflow UI:
 
+![connections](media/connections.png)
+
 4. Go to Admin > Connections
 5. Choose `postgres_default`
 6. Edit connection:
@@ -39,3 +65,7 @@ password: airflow
 7. Save
 
 You should now be able to run your DAG.
+
+![dags](media/dags.png)
+![details](media/details.png)
+![logs](media/logs.png)
